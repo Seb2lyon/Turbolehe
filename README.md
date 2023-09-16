@@ -135,3 +135,17 @@ Contributions to **Turbolehe** are welcome! If you have ideas for enhancements o
 ---
 
 *(Back to top)*
+
+
+
+
+<!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+[contributors-shield]: https://img.shields.io/github/contributors/UserCr4ig/Turbolehe.svg?style=for-the-badge
+[contributors-url]: https://github.com/UserCr4ig/Turbolehe/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/UserCr4ig/Turbolehe.svg?style=for-the-badge
+[forks-url]: https://github.com/UserCr4ig/Turbolehe/network/members
+[stars-shield]: https://img.shields.io/github/stars/UserCr4ig/Turbolehe.svg?style=for-the-badge
+[stars-url]: https://github.com/UserCr4ig/Turbolehe/stargazers
+[issues-shield]: https://img.shields.io/github/issues/UserCr4ig/Turbolehe.svg?style=for-the-badge
+[issues-url]: https://github.com/UserCr4ig/Turbolehe/issues
