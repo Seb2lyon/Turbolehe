@@ -134,7 +134,7 @@ Contributions to **Turbolehe** are welcome! If you have ideas for enhancements o
 
 ---
 
-*(Back to top)*
+[*(Back to top)*](https://github.com/UserCr4ig/Turbolehe#introduction)
 
 
 
