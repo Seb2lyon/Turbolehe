@@ -3,6 +3,9 @@ import csv
 import os
 import argparse
 
+# Paramètres
+domains = ["@gmail.com", "@yahoo.com", "@hotmail.com", "@outlook.com"]
+
 # Analyse des arguments de ligne de commande
 parser = argparse.ArgumentParser()
 parser.add_argument('search_term', nargs='+', help='Nom prénom ou chaîne de caractères')
@@ -15,61 +18,32 @@ if not search_term.replace(' ', '').isalpha():
     print("Erreur : Le terme de recherche doit contenir uniquement des lettres alphabétiques.")
     exit()
 
+
 # Fonction pour générer des adresses e-mail probables
-def generer_adresses(search_term):
+def generer_adresses(search_term, domains):
     adresses = []
-
     first_name, last_name = search_term.split(' ', 1)
-    domain = ["@gmail.com", "@yahoo.com", "@hotmail.com", "@outlook.com"]
-
-    adresses.append(first_name.lower() + '.' + last_name.lower() + domain[0])
-    adresses.append(first_name.lower()[0] + last_name.lower() + domain[0])
-    adresses.append(first_name.lower() + last_name.lower()[0] + domain[0])
-    adresses.append(first_name.lower()[0] + '.' + last_name.lower() + domain[0])
-    adresses.append(last_name.lower() + '.' + first_name.lower() + domain[0])
-    adresses.append(last_name.lower() + first_name.lower()[0] + domain[0])
-    adresses.append(last_name.lower()[0] + '.' + first_name.lower() + domain[0])
-    adresses.append(first_name.lower() + last_name.lower() + domain[0])
-    adresses.append(last_name.lower() + first_name.lower() + domain[0])
-    adresses.append(first_name.lower() + '.' + last_name.lower()[0] + domain[0])
-
-    adresses.append(first_name.lower() + '.' + last_name.lower() + domain[1])
-    adresses.append(first_name.lower()[0] + last_name.lower() + domain[1])
-    adresses.append(first_name.lower() + last_name.lower()[0] + domain[1])
-    adresses.append(first_name.lower()[0] + '.' + last_name.lower() + domain[1])
-    adresses.append(last_name.lower() + '.' + first_name.lower() + domain[1])
-    adresses.append(last_name.lower() + first_name.lower()[0] + domain[1])
-    adresses.append(last_name.lower()[0] + '.' + first_name.lower() + domain[1])
-    adresses.append(first_name.lower() + last_name.lower() + domain[1])
-    adresses.append(last_name.lower() + first_name.lower() + domain[1])
-    adresses.append(first_name.lower() + '.' + last_name.lower()[0] + domain[1])
-
-    adresses.append(first_name.lower() + '.' + last_name.lower() + domain[2])
-    adresses.append(first_name.lower()[0] + last_name.lower() + domain[2])
-    adresses.append(first_name.lower() + last_name.lower()[0] + domain[2])
-    adresses.append(first_name.lower()[0] + '.' + last_name.lower() + domain[2])
-    adresses.append(last_name.lower() + '.' + first_name.lower() + domain[2])
-    adresses.append(last_name.lower() + first_name.lower()[0] + domain[2])
-    adresses.append(last_name.lower()[0] + '.' + first_name.lower() + domain[2])
-    adresses.append(first_name.lower() + last_name.lower() + domain[2])
-    adresses.append(last_name.lower() + first_name.lower() + domain[2])
-    adresses.append(first_name.lower() + '.' + last_name.lower()[0] + domain[2])
-
-    adresses.append(first_name.lower() + '.' + last_name.lower() + domain[3])
-    adresses.append(first_name.lower()[0] + last_name.lower() + domain[3])
-    adresses.append(first_name.lower() + last_name.lower()[0] + domain[3])
-    adresses.append(first_name.lower()[0] + '.' + last_name.lower() + domain[3])
-    adresses.append(last_name.lower() + '.' + first_name.lower() + domain[3])
-    adresses.append(last_name.lower() + first_name.lower()[0] + domain[3])
-    adresses.append(last_name.lower()[0] + '.' + first_name.lower() + domain[3])
-    adresses.append(first_name.lower() + last_name.lower() + domain[3])
-    adresses.append(last_name.lower() + first_name.lower() + domain[3])
-    adresses.append(first_name.lower() + '.' + last_name.lower()[0] + domain[3])
+    
+    for domain in domains:
+        email_formats = [
+            first_name.lower() + '.' + last_name.lower() + domain,
+            first_name.lower()[0] + last_name.lower() + domain,
+            first_name.lower() + last_name.lower()[0] + domain,
+            first_name.lower()[0] + '.' + last_name.lower() + domain,
+            last_name.lower() + '.' + first_name.lower() + domain,
+            last_name.lower() + first_name.lower()[0] + domain,
+            last_name.lower()[0] + '.' + first_name.lower() + domain,
+            first_name.lower() + last_name.lower() + domain,
+            last_name.lower() + first_name.lower() + domain,
+            first_name.lower() + '.' + last_name.lower()[0] + domain,
+        ]
+        
+        adresses.extend(email_formats)
 
     return adresses
 
 # Générer les adresses e-mail probables en fonction du terme de recherche
-adresses_email = generer_adresses(search_term)
+adresses_email = generer_adresses(search_term,domains)
 
 # Vérifier si l'option -B est spécifiée pour filtrer les adresses par nom de domaine
 if args.B:
