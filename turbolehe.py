@@ -50,13 +50,16 @@ if args.B:
     domain = input("Entrez le nom de domaine : ")
     adresses_email = [adresse for adresse in adresses_email if adresse.endswith(domain)]
 
+# Création arboresence
+first_name, last_name = search_term.split(' ', 1)
+commande_arboresence = f"mkdir {first_name}-{last_name}"
+subprocess.run(commande_arboresence, shell=True)
+
 # Exécution de la commande pour tester chaque adresse e-mail
 for adresse in adresses_email:
-    commande = f"holehe {adresse} -C"
-    subprocess.run(commande, shell=True)
-
-# Chemin du répertoire contenant les fichiers CSV
-repertoire = os.path.dirname(os.path.abspath(__file__))
+    commande_holehe = f"cd {first_name}-{last_name} && holehe {adresse} -C"
+    subprocess.run(commande_holehe, shell=True)
+    repertoire = os.path.join(os.getcwd(), f"{first_name}-{last_name}")
 
 # Liste pour stocker les noms de fichiers valides
 fichiers_valides = []
@@ -99,5 +102,6 @@ with open(chemin_sortie, 'w', newline='') as csvfile:
             for row in reader:
                 row['adresse mail'] = adresse_mail
                 writer.writerow(row)
+
 
 print("Fichier main.csv généré avec succès.")
