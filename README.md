@@ -95,11 +95,15 @@ Example usage:
 python turbolehe.py John Doe
 ```
 
-Example with filter :
+Example with filter (we will use gmail for this example) :
 
 ```sh
-python turbolehe.py John Doe -B gmail.com
+python turbolehe.py John Doe -B
 ```
+```sh
+Entrez le nom de domaine : gmail.com
+```
+
 
 NB : This argument can be interesting if you know that this person uses such and such email service.
 
