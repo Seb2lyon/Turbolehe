@@ -35,6 +35,12 @@ def generate_addresses(search_term, domains):
             first_name.lower() + last_name.lower() + domain,
             last_name.lower() + first_name.lower() + domain,
             first_name.lower() + '.' + last_name.lower()[0] + domain,
+            first_name.lower() + '_' + last_name.lower()[0] + domain,  # Added format with underscore
+            first_name.lower()[0] + '_' + last_name.lower() + domain,  # Added format with underscore
+            first_name.lower() + '_' + last_name.lower() + domain,      # Added format with underscore
+            last_name.lower() + '_' + first_name.lower() + domain,      # Added format with underscore
+            last_name.lower() + '_' + first_name.lower()[0] + domain,   # Added format with underscore
+            last_name.lower()[0] + '_' + first_name.lower() + domain,   # Added format with underscore
         ]
 
         addresses.extend(email_formats)
